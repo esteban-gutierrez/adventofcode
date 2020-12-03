@@ -4,9 +4,9 @@ import com.adventofcode.util.CommonUtils;
 
 import java.util.Map;
 
-public class TwoEntriesSum2020 {
-    private static final Integer TARGET = 2020;
+import static com.adventofcode.util.CommonUtils.TARGET;
 
+public class TwoEntriesSum2020 {
     public static void main (String [] args) {
         Map<Integer, Integer> numbers = CommonUtils.readPuzzleInput();
         for (Integer number : numbers.values()) {
