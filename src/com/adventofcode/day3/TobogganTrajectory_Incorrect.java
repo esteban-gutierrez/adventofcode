@@ -4,51 +4,38 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class TobogganTrajectory {
+public class TobogganTrajectory_Incorrect {
     private static final String SQUARES_TREES_MAP = "resources/input_day_3.txt";
     private static final int HORIZONTAL_SLOPE = 3;
     private static final int VERTICAL_SLOPE = 1;
 
     public static void main (String [] args) {
-        int rows = getNumberOfRows(SQUARES_TREES_MAP);
-        int columns = getNumberOfColumns(SQUARES_TREES_MAP);
-        int [][] squaresAndTreesMap = readSquaresAndTreesMap(rows, columns);
+        int size = countLines(SQUARES_TREES_MAP);
+        int [][] squaresAndTreesMap = readSquaresAndTreesMap(size);
         int numberOfTrees = sumTreesInTobogganTrajectory(squaresAndTreesMap);
         System.out.println();
         System.out.println("Number of trees:" + numberOfTrees);
     }
 
-    private static int getNumberOfRows(String fileName) {
-        int rows = 0;
+    private static int countLines(String fileName) {
+        int size = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             while ((br.readLine()) != null) {
-                rows++;
+                size++;
             }
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
-        return rows;
+        return size;
     }
 
-    private static int getNumberOfColumns(String fileName) {
-        int columns = 0;
-        String line;
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-            line = br.readLine();
-            columns = line.length();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-        return columns;
-    }
-
-    private static int[][] readSquaresAndTreesMap(int rows, int columns) {
-        int [][] squaresAndTrees = new int[rows][columns];
+    private static int[][] readSquaresAndTreesMap(int size) {
+        int [][] squaresAndTrees = new int[size][size];
         try (BufferedReader br = new BufferedReader(new FileReader(SQUARES_TREES_MAP))) {
             String line;
             int i = 0;
             while ((line = br.readLine()) != null) {
-                squaresAndTrees[i] = readSquaresAndTreesInLine(line, columns);
+                squaresAndTrees[i] = readSquaresAndTreesInLine(line, size);
                 i++;
             }
         } catch (IOException ioe) {
@@ -74,14 +61,14 @@ public class TobogganTrajectory {
 
     private static int sumTreesInTobogganTrajectory(int [][] squaresAndTreesMap) {
         int numberOfTrees = 0;
-        int row = 0;
-        int column = 0;
-        while (row < squaresAndTreesMap.length) {
-            printLine(row, squaresAndTreesMap[row]);
-            System.out.print(" " + squaresAndTreesMap[row][column]);
-            numberOfTrees += squaresAndTreesMap[row][column];
-            row += VERTICAL_SLOPE;
-            column = (column + HORIZONTAL_SLOPE) % squaresAndTreesMap[0].length;
+        int vertical = 0;
+        int horizontal = 0;
+        while (vertical < squaresAndTreesMap.length) {
+            printLine(vertical, squaresAndTreesMap[vertical]);
+            printGeologicalPoint(squaresAndTreesMap[vertical], horizontal);
+            numberOfTrees += squaresAndTreesMap[vertical][horizontal];
+            vertical += VERTICAL_SLOPE;
+            horizontal = (horizontal + HORIZONTAL_SLOPE) % squaresAndTreesMap.length;
         }
         return numberOfTrees;
     }
@@ -92,5 +79,9 @@ public class TobogganTrajectory {
         for (int i = 0; i < line.length; i++) {
             System.out.print(line[i]);
         }
+    }
+
+    private static void printGeologicalPoint(int [] line, int horizontal) {
+        System.out.print(" " + line[horizontal]);
     }
 }
