@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CommonUtils {
-    public static final String PUZZLE_INPUT = "resources/input.txt";
+    public static final String PUZZLE_INPUT = "resources/input_days_1_2.txt";
     public static Map<Integer, Integer> readPuzzleInput() {
         Map<Integer, Integer> numbers = new HashMap<>();
         String file = PUZZLE_INPUT;
