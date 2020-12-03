@@ -8,10 +8,10 @@ import java.util.Map;
 
 public class CommonUtils {
     public static final String PUZZLE_INPUT = "resources/input_days_1_2.txt";
+
     public static Map<Integer, Integer> readPuzzleInput() {
         Map<Integer, Integer> numbers = new HashMap<>();
-        String file = PUZZLE_INPUT;
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(PUZZLE_INPUT))) {
             String line;
             while ((line = br.readLine()) != null) {
                 numbers.put(Integer.valueOf(line), Integer.valueOf(line));
