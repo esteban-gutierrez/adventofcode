@@ -15,7 +15,7 @@ public class PassportProcessing {
             while ((line = br.readLine()) != null) {
                 if (line.trim().length() == 0) {
                     System.out.println(totalPassports + "\t" + passportBean.toString());
-                    if (passportBean.isValid()) {
+                    if (passportBean.areRequiredFieldsPopulated()) {
                         validPassports++;
                     }
                     passportBean = new PassportBean();
@@ -26,7 +26,7 @@ public class PassportProcessing {
             }
             // Last password
             System.out.println(totalPassports + "\t" + passportBean.toString());
-            if (passportBean.isValid()) {
+            if (passportBean.areRequiredFieldsPopulated()) {
                 validPassports++;
             }
             totalPassports++;

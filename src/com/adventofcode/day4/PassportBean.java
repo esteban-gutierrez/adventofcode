@@ -103,7 +103,7 @@ public class PassportBean {
         }
     }
 
-    public boolean isValid() {
+    public boolean areRequiredFieldsPopulated() {
         return byr != null && iyr != null && eyr != null && hgt != null
                 && hcl != null && ecl != null && pid != null; // it is accepted that cid might not be set
     }
@@ -111,6 +111,6 @@ public class PassportBean {
     public String toString() {
         return "byr=" + byr + ", iyr=" + iyr + ", eyr=" + eyr + ", hgt=" + hgt
                 + ", hcl=" + hcl + ", ecl=" + ecl + ", pid=" + pid + ", cid=" + cid
-                + "\t Is valid=" + isValid();
+                + "\t Is valid=" + areRequiredFieldsPopulated();
     }
 }
