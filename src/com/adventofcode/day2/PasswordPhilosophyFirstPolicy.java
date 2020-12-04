@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class PasswordPhilosophy {
+public class PasswordPhilosophyFirstPolicy {
     private static final String PASSWORDS = "resources/passwords_day_2.txt";
 
     public static void main (String [] args) {
