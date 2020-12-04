@@ -1,14 +1,12 @@
-package com.adventofcode.day2;
-
-import com.adventofcode.util.CommonUtils;
+package com.adventofcode.day1;
 
 import java.util.Map;
 
-import static com.adventofcode.util.CommonUtils.TARGET;
+import static com.adventofcode.day1.UtilsDay1.TARGET;
 
 public class ThreeEntriesSum2020 {
     public static void main (String [] args) {
-        Map<Integer, Integer> numbers = CommonUtils.readPuzzleInput();
+        Map<Integer, Integer> numbers = UtilsDay1.readPuzzleInput();
         Integer numberTwo, numberThree;
         for (Integer numberOne : numbers.keySet()) {
             Integer nextTarget = TARGET - numberOne;

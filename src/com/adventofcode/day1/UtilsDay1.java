@@ -1,4 +1,4 @@
-package com.adventofcode.util;
+package com.adventofcode.day1;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CommonUtils {
+public class UtilsDay1 {
     public static final Integer TARGET = 2020;
-    public static final String PUZZLE_INPUT = "resources/input_days_1_2.txt";
+    public static final String PUZZLE_INPUT = "resources/input_day_1.txt";
 
     public static Map<Integer, Integer> readPuzzleInput() {
         Map<Integer, Integer> numbers = new HashMap<>();
