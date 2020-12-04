@@ -127,24 +127,19 @@ public class PassportBean {
     }
 
     private boolean isHgtValid() {
-        String [] heightData = hgt.split("cm");
-        if (heightData.length == 1) {
-            heightData = hgt.split("in");
-            if (heightData.length == 2) {
-                return Integer.valueOf(heightData[0]) >= 59 &&  Integer.valueOf(heightData[0]) <= 76;
-            }
-        } else {
-            return Integer.valueOf(heightData[0]) >= 150 &&  Integer.valueOf(heightData[0]) <= 193;
+        Integer height = null;
+        if (hgt.endsWith("cm")) {
+            height = Integer.valueOf(hgt.split("cm")[0]);
+            return height >= 150 && height <= 193;
+        } else if (hgt.endsWith("in")) {
+            height = Integer.valueOf(hgt.split("in")[0]);
+            return height >= 59 && height <= 76;
         }
         return false;
     }
 
     private boolean isHclValid() {
-        String [] hairColorData = hcl.split("#");
-        if (hairColorData.length == 2) {
-            return hairColorData[1].matches("^([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$");
-        }
-        return false;
+        return hcl.matches("^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$");
     }
 
     private boolean isEclValid() {
@@ -153,7 +148,7 @@ public class PassportBean {
     }
 
     private boolean isPidValid() {
-        return pid.matches("\\\\d+") && pid.length() == 9;
+        return pid.matches("\\d+") && pid.length() == 9;
     }
 
     public boolean isValid() {
