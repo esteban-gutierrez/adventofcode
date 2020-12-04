@@ -2,7 +2,6 @@ package com.adventofcode.day2;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 
 public class PasswordPhilosophySecondPolicy {
     private static final String PASSWORDS = "resources/passwords_day_2.txt";
@@ -47,7 +46,7 @@ public class PasswordPhilosophySecondPolicy {
         return policy.charAt(policy.length() - 1);
     }
 
-    private static boolean isValidPassword(String password, char letter, int first, int second) throws StringIndexOutOfBoundsException {
+    private static boolean isValidPassword(String password, char letter, int first, int second) {
         return password.charAt(first - 1) == letter ^ password.charAt(second - 1) == letter;
     }
 }
