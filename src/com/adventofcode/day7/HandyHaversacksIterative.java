@@ -4,15 +4,15 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.*;
 
-public class HandyHaversacksIncorrect {
+public class HandyHaversacksIterative {
     private static final String BAG_RULES = "resources/bag_rules_day_7.txt";
     private static final String TARGET_COLOUR = "shiny gold";
 
     private static Map<String, BagContent[]> bagRules = new HashMap<>();
-    private static List<String> targetRules = new ArrayList<>();
+    private static Map<String, String> targetRules = new HashMap<>();
+    private static Map<String, String> containerBags = new HashMap<>();
 
     public static void main(String[] args) {
-        targetRules.add(TARGET_COLOUR);
         try (BufferedReader br = new BufferedReader(new FileReader(BAG_RULES))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -21,11 +21,12 @@ public class HandyHaversacksIncorrect {
                         .replaceAll("\\.", ""));
 
             }
+            targetRules.put(TARGET_COLOUR, TARGET_COLOUR);
             boolean keepSearching = true;
             while (keepSearching) {
-                keepSearching = findTargetRules();
+                keepSearching = findContainerBags();
             }
-            System.out.println("Number of bag colors that can eventually contain at least one shiny gold bag: " + targetRules.size());
+            System.out.println("Number of bag colors that can eventually contain at least one shiny gold bag: " + containerBags.size());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -42,26 +43,6 @@ public class HandyHaversacksIncorrect {
         bagRules.put(bagColour, allBagContent);
     }
 
-    private static boolean findTargetRules() {
-        boolean newRulesFound = false;
-        List<String> copyOfTargetRules = new ArrayList<>(targetRules);
-        Map<String, BagContent[]> copyOfBagRules = new HashMap<>(bagRules);
-        for (String rule : copyOfBagRules.keySet()) {
-            for (BagContent bagContent : copyOfBagRules.get(rule)) {
-                for (String targetRule : copyOfTargetRules) {
-                    if (bagContent != null && bagContent.getBagColour().contains(targetRule)) {
-                        targetRules.add(rule);
-                        bagRules.remove(rule);
-                        newRulesFound = true;
-                        System.out.println(rule + " can contain " + bagContent.getBagColour());
-                        break;
-                    }
-                }
-            }
-        }
-        return newRulesFound;
-    }
-
     private static BagContent processBagContentString(String content) {
         if (content.trim().startsWith("no")) {
             return null;
@@ -71,5 +52,27 @@ public class HandyHaversacksIncorrect {
         bagContent.setQuantity(Integer.valueOf(quantityAndColour[0].trim()));
         bagContent.setBagColour(content.replace(quantityAndColour[0], "").trim());
         return bagContent;
+    }
+
+    private static boolean findContainerBags() {
+        boolean newBagsFound = false;
+        Map<String, String> copyOfTargetRules = new HashMap<>(targetRules);
+        System.out.println("Searching for bags that contain: " + targetRules.keySet());
+        for (String targetRule : copyOfTargetRules.keySet()) {
+            targetRules.remove(targetRule);
+            for (String rule : bagRules.keySet()) {
+                for (BagContent bagContent : bagRules.get(rule)) {
+                    if (bagContent != null && bagContent.getBagColour().contains(targetRule)) {
+                        newBagsFound = true;
+                        targetRules.put(rule, rule);
+                        containerBags.put(rule, rule);
+                        System.out.println("\t" + rule + " can contain " + bagContent.getBagColour());
+                        break;
+                    }
+                }
+            }
+        }
+        System.out.println("\t\tBags found: " + targetRules.size());
+        return newBagsFound;
     }
 }
