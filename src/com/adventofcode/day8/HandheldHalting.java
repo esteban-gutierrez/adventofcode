@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.adventofcode.day8.Instruction.Operation.acc;
-
 public class HandheldHalting {
     private static final String BOOT_CODE = "resources/boot_code_day_8.txt";
     private static final int OFFSET_NEXT_INSTRUCTION = 1;
@@ -32,12 +30,7 @@ public class HandheldHalting {
         Instruction instruction = new Instruction();
         String [] instructionParts = line.split(" ");
         instruction.setOperation(Instruction.Operation.valueOf(instructionParts[0]));
-        if (acc == instruction.getOperation()
-            || Instruction.Operation.jmp == instruction.getOperation()) {
-            instruction.setOffset(Integer.valueOf(instructionParts[1]));
-        } else {
-            instruction.setOffset(OFFSET_NEXT_INSTRUCTION); // next instruction
-        }
+        instruction.setOffset(Integer.valueOf(instructionParts[1]));
         System.out.println(instruction);
         return instruction;
     }
@@ -53,6 +46,8 @@ public class HandheldHalting {
         switch (instruction.getOperation()) {
             case acc:
                 accumulator += instruction.getOffset();
+                return OFFSET_NEXT_INSTRUCTION;
+            case nop:
                 return OFFSET_NEXT_INSTRUCTION;
             default:
                 return instruction.getOffset();
