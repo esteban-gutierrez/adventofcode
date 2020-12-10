@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class PassportProcessingWithValidation {
-    private static final String PASSPORTS_INPUT = "resources/passports_day_4.txt";
+    private static final String PASSPORTS_INPUT = "resources/day_4_passports.txt";
 
     public static void main (String [] args) {
         int totalPassports = 1;

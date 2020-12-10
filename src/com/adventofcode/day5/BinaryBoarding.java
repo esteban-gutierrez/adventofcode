@@ -7,7 +7,7 @@ import static com.adventofcode.day5.UtilsDay5.transformRowIntoBinary;
 import static com.adventofcode.day5.UtilsDay5.transformSeatIntoBinary;
 
 public class BinaryBoarding {
-    private static final String BOARDING_PASSES = "resources/boarding_passes_day_5.txt";
+    private static final String BOARDING_PASSES = "resources/day_5_boarding_passes.txt";
 
     public static void main (String [] args) {
         try (BufferedReader br = new BufferedReader(new FileReader(BOARDING_PASSES))) {

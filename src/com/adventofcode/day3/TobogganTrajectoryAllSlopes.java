@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class TobogganTrajectoryAllSlopes {
-    private static final String SQUARES_TREES_MAP = "resources/input_day_3.txt";
+    private static final String SQUARES_TREES_MAP = "resources/day_3_map_of_squares_and_trees.txt";
     private static final int [] HORIZONTAL_SLOPE = {1, 3, 5, 7, 1};
     private static final int [] VERTICAL_SLOPE = {1, 1, 1, 1, 2};
 

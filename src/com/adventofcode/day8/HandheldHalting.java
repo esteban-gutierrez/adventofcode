@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HandheldHalting {
-    private static final String BOOT_CODE = "resources/boot_code_day_8.txt";
+    private static final String BOOT_CODE = "resources/day_8_boot_code.txt";
     private static final int OFFSET_NEXT_INSTRUCTION = 1;
     private static List<Instruction> instructionList = new ArrayList<>();
     private static List<Integer> instructionPosition = new ArrayList<>();

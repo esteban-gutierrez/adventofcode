@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class PasswordPhilosophySecondPolicy {
-    private static final String PASSWORDS = "resources/passwords_day_2.txt";
+    private static final String PASSWORDS = "resources/day_2_passwords.txt";
 
     public static void main (String [] args) {
         int validPasswords = 0;

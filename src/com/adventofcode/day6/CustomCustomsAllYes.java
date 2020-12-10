@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomCustomsAllYes {
-    private static final String CUSTOMS_ANSWERS = "resources/customs_declaration_answers_day_6.txt";
+    private static final String CUSTOMS_ANSWERS = "resources/day_6_customs_declaration_answers.txt";
 
     public static void main (String [] args) {
         try (BufferedReader br = new BufferedReader(new FileReader(CUSTOMS_ANSWERS))) {

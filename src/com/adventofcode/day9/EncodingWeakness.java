@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class EncodingWeakness {
-    private static final String ENCRYPTED_DATA = "resources/encrypted_data_day_9.txt";
+    private static final String ENCRYPTED_DATA = "resources/day_9_encrypted_data.txt";
     private static final int AMOUNT_OF_NUMBERS = 25;
 
     private static long[] encryptedData;

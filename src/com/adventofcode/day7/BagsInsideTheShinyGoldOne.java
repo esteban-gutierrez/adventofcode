@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BagsInsideTheShinyGoldOne {
-    private static final String BAG_RULES = "resources/bag_rules_day_7.txt";
+    private static final String BAG_RULES = "resources/day_7_bag_rules.txt";
     private static final String TARGET_COLOUR = "shiny gold";
 
     public static void main(String[] args) {

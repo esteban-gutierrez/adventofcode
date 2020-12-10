@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.util.*;
 
 public class HandyHaversacksIterative {
-    private static final String BAG_RULES = "resources/bag_rules_day_7.txt";
+    private static final String BAG_RULES = "resources/day_7_bag_rules.txt";
     private static final String TARGET_COLOUR = "shiny gold";
 
     private static Map<String, BagContent[]> bagRules = new HashMap<>();

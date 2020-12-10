@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class UtilsDay1 {
     public static final Integer TARGET = 2020;
-    public static final String PUZZLE_INPUT = "resources/input_day_1.txt";
+    public static final String PUZZLE_INPUT = "resources/day_1_input.txt";
 
     public static Map<Integer, Integer> readPuzzleInput() {
         Map<Integer, Integer> numbers = new HashMap<>();
