@@ -49,7 +49,7 @@ public class AdapterArray {
 
     private static void countDifferences() {
         int referenceJoltage = STARTING_JOLTAGE;
-        int difference = 0;
+        int difference;
         for (int i = 1; i < adapters.size(); i++) {
             difference = adapters.get(i) - referenceJoltage;
             joltDifferences.put(difference, joltDifferences.get(difference) + 1);
